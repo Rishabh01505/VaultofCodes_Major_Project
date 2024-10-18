@@ -1,0 +1,38 @@
+email_list -
+
+function doPost(e) {
+  const data = JSON.parse(e.postData.contents);
+
+  // Open Google Sheet
+  const ss = SpreadsheetApp.openById("182qdJLMGdJuyXGJQHztOpxDNCiq9muZtCNLH5MApoRc");
+  const sheet = ss.getSheetByName("email_list");
+
+  // Append form data to the sheet
+  sheet.appendRow([data.email, new Date()]);
+
+  return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
+                       .setMimeType(ContentService.MimeType.JSON);
+}
+
+https://docs.google.com/spreadsheets/d/182qdJLMGdJuyXGJQHztOpxDNCiq9muZtCNLH5MApoRc/edit?gid=0#gid=0
+
+submission_form -
+
+function doPost(e) {
+  const data = JSON.parse(e.postData.contents);
+
+  // Open Google Sheet
+  const ss = SpreadsheetApp.openById("11jvcW1_-Ok19sZbeTcCEU8Hkx9MoR535DXaVpSIL0yI");
+  const sheet = ss.getSheetByName("submission_form");
+
+  // Append form data to the sheet
+  sheet.appendRow([data.name, data.email, data.message, data.message, new Date()]);
+
+  return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
+                       .setMimeType(ContentService.MimeType.JSON);
+}
+
+https://docs.google.com/spreadsheets/d/11jvcW1_-Ok19sZbeTcCEU8Hkx9MoR535DXaVpSIL0yI/edit?gid=0#gid=0
+
+
+
