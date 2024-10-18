@@ -26,7 +26,7 @@ function doPost(e) {
   const sheet = ss.getSheetByName("submission_form");
 
   // Append form data to the sheet
-  sheet.appendRow([data.name, data.email, data.message, data.message, new Date()]);
+  sheet.appendRow([data.name, data.email, data.message, data.phone, new Date()]);
 
   return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
                        .setMimeType(ContentService.MimeType.JSON);
